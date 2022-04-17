@@ -1,5 +1,9 @@
 import styled from 'styled-components/native'
 
+interface MenuBottomProps {
+  readonly spaced?: boolean
+}
+
 export const Container = styled.View`
   flex: 1;
 
@@ -22,7 +26,7 @@ export const Menu = styled.View`
   flex-direction: column;
 `
 
-export const MenuButton = styled.View`
+export const MenuButton = styled.View<MenuBottomProps>`
   background-color: #dfdfdf;
   color: #484848;
   border-radius: 5px;
@@ -34,7 +38,7 @@ export const MenuButton = styled.View`
   align-items: center;
   flex-direction: row;
 
-  margin-bottom: 18px;
+  margin-bottom: ${(props) => (props.spaced ? '80px' : '18px')};
 `
 
 export const MenuButtonText = styled.Text`
