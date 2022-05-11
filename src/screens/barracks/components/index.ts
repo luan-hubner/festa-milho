@@ -32,6 +32,6 @@ export const Input = styled.TextInput`
   color: #484848;
 `
 
-export const Foods = styled.ScrollView`
+export const BarracksMenu = styled.ScrollView`
   flex: 1;
 `

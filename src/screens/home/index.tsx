@@ -8,12 +8,11 @@ import {
   MenuButton
 } from './components'
 import { FontAwesome5 as FA5 } from '@expo/vector-icons'
-import { TouchableHighlight } from 'react-native'
+import { TouchableHighlight, View } from 'react-native'
 
 export default function Home({ navigation }) {
   return (
     <Container>
-      <StatusBar style="auto" />
       <Image source={require('../../../assets/milho_logo.png')} />
 
       <Menu>
@@ -25,7 +24,7 @@ export default function Home({ navigation }) {
 
         <TouchableHighlight
           underlayColor="none"
-          onPress={() => navigation.push('Cardápio')}
+          onPress={() => navigation.navigate('Cardápio')}
         >
           <MenuButton>
             <MenuButtonText>CARDÁPIO</MenuButtonText>
@@ -34,17 +33,28 @@ export default function Home({ navigation }) {
           </MenuButton>
         </TouchableHighlight>
 
-        <MenuButton>
-          <MenuButtonText>BARRACAS</MenuButtonText>
+        <TouchableHighlight
+          underlayColor="none"
+          onPress={() => navigation.navigate('Barracas')}
+        >
+          <MenuButton>
+            <MenuButtonText>BARRACAS</MenuButtonText>
 
-          <FA5 name="store" color="#484848" size={28} />
-        </MenuButton>
+            <FA5 name="store" color="#484848" size={28} />
+          </MenuButton>
+        </TouchableHighlight>
 
-        <MenuButton spaced>
-          <MenuButtonText>TICKETS</MenuButtonText>
 
-          <FA5 name="ticket-alt" color="#484848" size={28} />
-        </MenuButton>
+        <TouchableHighlight
+          underlayColor="none"
+          onPress={() => navigation.navigate('Tickets')}
+        >
+          <MenuButton>
+            <MenuButtonText>TICKETS</MenuButtonText>
+
+            <FA5 name="ticket-alt" color="#484848" size={28} />
+          </MenuButton>
+        </TouchableHighlight>
 
         <MenuButton>
           <MenuButtonText>INFORMAÇÕES</MenuButtonText>

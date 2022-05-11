@@ -9,10 +9,12 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  margin-bottom: 20px;
 `
 
 export const Title = styled.Text`
-  font-family: 'Poppins_700Bold';
+  font-family: 'Archivo_700Bold';
   font-size: 24px;
   text-align: left;
 

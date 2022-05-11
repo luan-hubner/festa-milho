@@ -16,7 +16,7 @@ export const Image = styled.Image`
   width: 251px;
   height: 115px;
 
-  margin-bottom: 84px;
+  margin-bottom: 50px;
 `
 
 export const Menu = styled.View`
