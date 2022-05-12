@@ -15,6 +15,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler'
 import ModalBarrack from './components/modal-barrack'
 
 interface BarrackProps {
+  navigation: any
   barrack: BarrackType
 }
 
@@ -26,7 +27,7 @@ interface BarrackType {
   stars: number
 }
 
-export default function Barrack({ barrack }: BarrackProps) {
+export default function Barrack({ navigation, barrack }: BarrackProps) {
   const [barrackDetailsOpen, setBarrackDetailsOpen] = useState(false)
 
   return (
@@ -57,7 +58,11 @@ export default function Barrack({ barrack }: BarrackProps) {
             setBarrackDetailsOpen(false)
           }}
         >
-          <ModalBarrack barrack={barrack} setBarrackDetailsOpen={setBarrackDetailsOpen} />
+          <ModalBarrack
+            navigation={navigation}
+            barrack={barrack}
+            setBarrackDetailsOpen={setBarrackDetailsOpen}
+          />
         </BarrackDetails>
       </Container>
     </TouchableHighlight>

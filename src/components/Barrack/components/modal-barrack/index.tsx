@@ -17,10 +17,11 @@ import {
   BarrackVoteModal
 } from './components'
 import { FontAwesome5 as FA5 } from '@expo/vector-icons'
-import { TouchableHighlight } from 'react-native-gesture-handler'
+
 import VoteBarrackModal from './vote-barrack-modal'
 
 interface ModalBarrackProps {
+  navigation: any
   barrack: BarrackType
   setBarrackDetailsOpen: (value: boolean) => void
 }
@@ -33,7 +34,11 @@ interface BarrackType {
   stars: number
 }
 
-export default function ModalBarrack({ barrack, setBarrackDetailsOpen }: ModalBarrackProps) {
+export default function ModalBarrack({
+  navigation,
+  barrack,
+  setBarrackDetailsOpen
+}: ModalBarrackProps) {
   const [voteBarrackModalOpen, setVoteBarrackModalOpen] = React.useState(false)
 
   const foodList = [
@@ -83,7 +88,7 @@ export default function ModalBarrack({ barrack, setBarrackDetailsOpen }: ModalBa
     {
       nome: 'Pinga boas',
       valor: 12
-    },
+    }
   ]
 
   const [foods, setFoods] = React.useState(foodList)
@@ -92,7 +97,10 @@ export default function ModalBarrack({ barrack, setBarrackDetailsOpen }: ModalBa
   return (
     <OutsideContainer>
       <Container>
-        <CloseIcon onPress={() => setBarrackDetailsOpen(false)} underlayColor="none">
+        <CloseIcon
+          onPress={() => setBarrackDetailsOpen(false)}
+          underlayColor="none"
+        >
           <FA5 name="times-circle" color="#484848" size={28} />
         </CloseIcon>
 
@@ -149,7 +157,11 @@ export default function ModalBarrack({ barrack, setBarrackDetailsOpen }: ModalBa
           setVoteBarrackModalOpen(false)
         }}
       >
-        <VoteBarrackModal barrack={barrack} setVoteBarrackModalOpen={setVoteBarrackModalOpen} />
+        <VoteBarrackModal
+          navigation={navigation}
+          barrack={barrack}
+          setVoteBarrackModalOpen={setVoteBarrackModalOpen}
+        />
       </BarrackVoteModal>
     </OutsideContainer>
   )

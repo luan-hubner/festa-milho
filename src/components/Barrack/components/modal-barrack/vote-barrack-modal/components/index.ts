@@ -14,7 +14,7 @@ export const Image = styled.Image`
 
   margin: 0 auto;
 
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 `
 
 export const CloseIcon = styled.TouchableHighlight`
@@ -28,6 +28,51 @@ export const Title = styled.Text`
   font-size: 32px;
   text-align: center;
   margin-bottom: 25px;
+`
+
+export const FormInvalid = styled.Text`
+  font-family: Archivo_700Bold;
+  font-size: 16px;
+  color: red;
+  text-align: center;
+  margin-bottom: 25px;
+`
+
+export const FormValid = styled.Text`
+  font-family: Archivo_700Bold;
+  font-size: 20px;
+  color: #008e1f;
+  text-align: center;
+  margin-bottom: 25px;
+`
+
+export const AlreadyVoted = styled.Text`
+  font-family: Archivo_700Bold_Italic;
+  font-size: 20px;
+  color: #008e1f;
+  text-align: center;
+  margin-bottom: 25px;
+`
+
+export const AfterVoteInformation = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ClaimTicket = styled.TouchableHighlight`
+  width: 100%;
+  height: 62px;
+  background-color: #008e1f;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 5px;
+
+  margin: 0 auto;
 `
 
 export const Button = styled.TouchableHighlight`
@@ -56,7 +101,7 @@ export const Form = styled.View`
   justify-content: center;
   align-items: center;
 
-  padding: 0 26px;
+  padding: 40px 26px 0 26px;
 `
 
 export const Input = styled.View`
@@ -66,12 +111,12 @@ export const Input = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  
+
   padding: 18px 20px;
 
   background-color: #e5e5e5;
   border-radius: 5px;
-  
+
   margin-bottom: 12px;
 `
 
@@ -87,7 +132,6 @@ export const Information = styled.Text`
   color: #5f5f5f;
   font-size: 18px;
   text-align: center;
-  margin-bottom: 80px;
 `
 
 export const SwitchInput = styled.View`

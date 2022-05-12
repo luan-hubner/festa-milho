@@ -56,7 +56,9 @@ export default function Barracks({ route, navigation }: BarracksScreenProps) {
     let barracksArr = []
 
     for (const barrackId of filteredBarracks) {
-      barracksArr.push(listOfBarracks.filter(barrack => barrack.id === barrackId)[0])
+      barracksArr.push(
+        listOfBarracks.filter((barrack) => barrack.id === barrackId)[0]
+      )
     }
 
     setBarracks(barracksArr)
@@ -67,16 +69,22 @@ export default function Barracks({ route, navigation }: BarracksScreenProps) {
       setBarracks(listOfBarracks)
     } else {
       let filtered = []
-      
+
       for (let index = 0; index < listOfBarracks.length; index++) {
-        if (listOfBarracks[index].name.toLowerCase().includes(value.toLowerCase())) {
+        if (
+          listOfBarracks[index].name.toLowerCase().includes(value.toLowerCase())
+        ) {
           filtered.push(listOfBarracks[index])
         } else {
-          if (listOfBarracks[index].course.toLowerCase().includes(value.toLowerCase())) {
+          if (
+            listOfBarracks[index].course
+              .toLowerCase()
+              .includes(value.toLowerCase())
+          ) {
             filtered.push(listOfBarracks[index])
           }
         }
-        
+
         if (index === listOfBarracks.length - 1) {
           setBarracks(filtered)
         }
@@ -100,7 +108,7 @@ export default function Barracks({ route, navigation }: BarracksScreenProps) {
 
       <BarracksMenu showsVerticalScrollIndicator={false}>
         {barracks.map((barrack) => (
-          <Barrack key={barrack.id} barrack={barrack} />
+          <Barrack navigation={navigation} key={barrack.id} barrack={barrack} />
         ))}
       </BarracksMenu>
     </Container>
