@@ -5,43 +5,14 @@ import { FontAwesome5 as FA5 } from '@expo/vector-icons'
 import Header from '../../components/Header'
 import Barrack from '../../components/Barrack'
 
+import { barracas as listOfBarracks } from '../../../assets/barracks.json'
+
 interface BarracksScreenProps {
   route: any
   navigation: any
 }
 
 export default function Barracks({ route, navigation }: BarracksScreenProps) {
-  const listOfBarracks = [
-    {
-      id: 1,
-      name: 'Milhosoft',
-      course: 'Análise e Desenv. de Sistemas',
-      image: require('../../../assets/barracks/milhosoft.png'),
-      stars: 215
-    },
-    {
-      id: 2,
-      name: 'asdasdsad',
-      course: 'Engenharia Civil',
-      image: require('../../../assets/barracks/milhosoft.png'),
-      stars: 45
-    },
-    {
-      id: 3,
-      name: 'Cabaré das Nutri',
-      course: 'Nutrição',
-      image: require('../../../assets/barracks/milhosoft.png'),
-      stars: 33
-    },
-    {
-      id: 4,
-      name: 'ADMilhão',
-      course: 'Administração',
-      image: require('../../../assets/barracks/milhosoft.png'),
-      stars: 98
-    }
-  ]
-
   const [barracks, setBarracks] = React.useState([])
 
   React.useEffect(() => {
@@ -72,12 +43,12 @@ export default function Barracks({ route, navigation }: BarracksScreenProps) {
 
       for (let index = 0; index < listOfBarracks.length; index++) {
         if (
-          listOfBarracks[index].name.toLowerCase().includes(value.toLowerCase())
+          listOfBarracks[index].nome.toLowerCase().includes(value.toLowerCase())
         ) {
           filtered.push(listOfBarracks[index])
         } else {
           if (
-            listOfBarracks[index].course
+            listOfBarracks[index].curso
               .toLowerCase()
               .includes(value.toLowerCase())
           ) {

@@ -28,10 +28,24 @@ interface ModalBarrackProps {
 
 interface BarrackType {
   id: number
-  name: string
-  course: string
-  image: string
-  stars: number
+  nome: string
+  curso: string
+  cardapio: FoodMenuType
+}
+
+interface FoodMenuType {
+  comidas: FoodType[]
+  bebidas: DrinkType[]
+}
+
+interface FoodType {
+  nome: string
+  valor: number
+}
+
+interface DrinkType {
+  nome: string
+  valor: number
 }
 
 export default function ModalBarrack({
@@ -41,58 +55,8 @@ export default function ModalBarrack({
 }: ModalBarrackProps) {
   const [voteBarrackModalOpen, setVoteBarrackModalOpen] = React.useState(false)
 
-  const foodList = [
-    {
-      nome: 'Espeto de Frango',
-      valor: 12
-    },
-    {
-      nome: 'Espeto de Gado',
-      valor: 12
-    },
-    {
-      nome: 'Pamonha Recheada',
-      valor: 10
-    },
-    {
-      nome: 'Pudim Frito',
-      valor: 12
-    }
-  ]
-
-  const drinkList = [
-    {
-      nome: 'Cerveja lata',
-      valor: 12
-    },
-    {
-      nome: 'Refrigerante lata',
-      valor: 8
-    },
-    {
-      nome: 'Cerveja garrafa (600ml)',
-      valor: 12
-    },
-    {
-      nome: 'Mé',
-      valor: 12
-    },
-    {
-      nome: 'Pinga boaes',
-      valor: 12
-    },
-    {
-      nome: 'Pinga boa',
-      valor: 12
-    },
-    {
-      nome: 'Pinga boas',
-      valor: 12
-    }
-  ]
-
-  const [foods, setFoods] = React.useState(foodList)
-  const [drinks, setDrinks] = React.useState(drinkList)
+  const [foods, setFoods] = React.useState(barrack.cardapio.comidas)
+  const [drinks, setDrinks] = React.useState(barrack.cardapio.bebidas)
 
   return (
     <OutsideContainer>
@@ -104,9 +68,11 @@ export default function ModalBarrack({
           <FA5 name="times-circle" color="#484848" size={28} />
         </CloseIcon>
 
-        <Image source={barrack.image} />
+        <Image
+          source={require('../../../../../assets/barracks/milhosoft.png')}
+        />
 
-        <Title>{barrack.name}</Title>
+        <Title>{barrack.nome}</Title>
 
         <Section>
           <Description>comidas</Description>

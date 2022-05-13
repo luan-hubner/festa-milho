@@ -21,10 +21,24 @@ interface BarrackProps {
 
 interface BarrackType {
   id: number
-  name: string
-  course: string
-  image: string
-  stars: number
+  nome: string
+  curso: string
+  cardapio: FoodMenuType
+}
+
+interface FoodMenuType {
+  comidas: FoodType[]
+  bebidas: DrinkType[]
+}
+
+interface FoodType {
+  nome: string
+  valor: number
+}
+
+interface DrinkType {
+  nome: string
+  valor: number
 }
 
 export default function Barrack({ navigation, barrack }: BarrackProps) {
@@ -38,17 +52,17 @@ export default function Barrack({ navigation, barrack }: BarrackProps) {
     >
       <Container>
         <Row>
-          <Image source={barrack.image} />
+          <Image source={require('../../../assets/barracks/milhosoft.png')} />
           <Details>
-            <Title>{barrack.name}</Title>
-            <Subtitle>{barrack.course}</Subtitle>
+            <Title>{barrack.nome}</Title>
+            <Subtitle>{barrack.curso}</Subtitle>
           </Details>
         </Row>
 
-        <Stars>
+        {/* <Stars>
           <FA5 name="star" color="#484848" size={28} />
           <Quantity>{barrack.stars}</Quantity>
-        </Stars>
+        </Stars> */}
 
         <BarrackDetails
           animationType="slide"

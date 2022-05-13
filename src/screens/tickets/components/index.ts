@@ -17,10 +17,9 @@ export const Ticket = styled.View`
 
   background-color: red;
 
-  border: 1px solid #ADFF00;
+  border: 1px solid #adff00;
 
   margin-bottom: 10px;
-
 `
 
 export const TicketBody = styled.View`
@@ -33,7 +32,7 @@ export const TicketBody = styled.View`
   justify-content: space-between;
 
   border-right-width: 1px;
-  border-right-color: #ADFF00;
+  border-right-color: #adff00;
   padding: 15px;
 `
 

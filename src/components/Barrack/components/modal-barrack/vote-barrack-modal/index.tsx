@@ -31,10 +31,24 @@ interface VoteBarrackModalProps {
 
 interface BarrackType {
   id: number
-  name: string
-  course: string
-  image: string
-  stars: number
+  nome: string
+  curso: string
+  cardapio: FoodMenuType
+}
+
+interface FoodMenuType {
+  comidas: FoodType[]
+  bebidas: DrinkType[]
+}
+
+interface FoodType {
+  nome: string
+  valor: number
+}
+
+interface DrinkType {
+  nome: string
+  valor: number
 }
 
 export default function VoteBarrackModal({
@@ -120,12 +134,18 @@ export default function VoteBarrackModal({
     )
       .then((response) => response.json())
       .then(async (response) => {
-        const remodelResponse = Object.keys(response).map((key) => {
+        let userId: string
+
+        const remodelResponse = Object.keys(response).map((key, index) => {
           /*   
             CONVERTE RETORNO DO FIREBASE QUE VEM
             COMO OBJETO DE OBJETOS PARA ARRAY DE
             OBJETOS PARA FACILITAR O MANUSEIO DOS DADOS
           */
+
+          if (index === 0) {
+            userId = key
+          }
 
           return response[key]
         })
@@ -136,6 +156,7 @@ export default function VoteBarrackModal({
           await AsyncStorage.setItem(
             '@VOTE_PAYLOAD',
             JSON.stringify({
+              id: userId,
               name: remodelResponse[0].nome,
               phone: remodelResponse[0].fone,
               student: remodelResponse[0].aluno
@@ -213,9 +234,11 @@ export default function VoteBarrackModal({
 
       {!keyboardOpen ? (
         <>
-          <Image source={barrack.image} />
+          <Image
+            source={require('../../../../../../assets/barracks/milhosoft.png')}
+          />
 
-          <Title>{barrack.name}</Title>
+          <Title>{barrack.nome}</Title>
 
           {!userAlreadyHaveVote && (
             <Information>
@@ -225,7 +248,7 @@ export default function VoteBarrackModal({
           )}
         </>
       ) : (
-        <Title>{barrack.name}</Title>
+        <Title>{barrack.nome}</Title>
       )}
 
       {userAlreadyHaveVote ? (

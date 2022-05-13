@@ -71,6 +71,7 @@ export const ItemText = styled.Text`
   font-size: 18px;
   color: #484848;
   padding: 8px 0;
+  max-width: 80%;
 `
 
 export const VoteFooter = styled.View`
@@ -107,7 +108,6 @@ export const ButtonText = styled.Text`
   color: #fff;
 `
 
-
 export const BarrackVoteModal = styled.Modal`
   margin: 20px;
   background-color: white;
@@ -118,4 +118,3 @@ export const BarrackVoteModal = styled.Modal`
   shadow-radius: 4px;
   elevation: 5;
 `
-
