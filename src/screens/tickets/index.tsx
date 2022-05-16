@@ -6,11 +6,15 @@ import {
   BarrackName,
   Container,
   Description,
+  Hour,
   Price,
   Ticket,
   TicketBody,
   TicketDetails,
-  TicketTab
+  TicketTab,
+  User,
+  YourTicketInformationText,
+  YourTicketInformationTitle
 } from './components'
 
 import { Text } from 'react-native'
@@ -31,9 +35,9 @@ interface TicketsScreenProps {
 
 interface UserPayloadType {
   id: string
-  name: string
-  phone: string
-  student: string
+  nome: string
+  fone: string
+  aluno: string
   tickets: UserPayloadTicketsType
 }
 
@@ -49,6 +53,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
     React.useState(false)
 
   const [userTickets, setUserTickets] = React.useState(null)
+  const [limitHour, setLimitHour] = React.useState('')
 
   const tickets = [
     {
@@ -66,12 +71,17 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
   const verifyIfUserAlreadyVote = async (): Promise<void> => {
     const payload = await AsyncStorage.getItem('@VOTE_PAYLOAD')
 
+    if (!payload) {
+      return
+    }
+
     const payloadParsed = JSON.parse(payload)
 
     if (payloadParsed.tickets) {
       const ticket = tickets.filter(
         (ticket) => ticket.id_barraca === payloadParsed.tickets[0].id_barraca
       )[0]
+      setLimitHour(payloadParsed.tickets[0].hora)
       setUserTickets(ticket)
     }
 
@@ -87,9 +97,11 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
       <Header title="Tickets" />
 
       {userPayload ? (
-        userPayload.tickets ? (
+        userTickets ? (
           <>
-            <Text>Seu Ticket</Text>
+            <User>{userPayload.nome}</User>
+
+            <YourTicketInformationTitle>VOCÊ POSSUI UM TICKET RESGATADO</YourTicketInformationTitle>
 
             <TouchableHighlight
               key={userTickets.descricao}
@@ -107,6 +119,11 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
                 </TicketTab>
               </Ticket>
             </TouchableHighlight>
+
+
+            <YourTicketInformationText>RESGATE O SEU PRODUTO ATÉ:</YourTicketInformationText>
+
+            <Hour>{limitHour.split(':')[0] + ':' + limitHour.split(':')[1]}</Hour>
           </>
         ) : (
           tickets.map((ticket) => (

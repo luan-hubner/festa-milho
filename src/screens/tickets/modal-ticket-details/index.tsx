@@ -37,6 +37,11 @@ export default function ModalTicketDetails({
   const confirmTicketSelection = async () => {
     const userPayload = JSON.parse(await AsyncStorage.getItem('@VOTE_PAYLOAD'))
 
+    const now = new Date()
+    const limitHourToClaimTicket = new Date(now.getTime() + 15 * 60000)
+
+    console.log(limitHourToClaimTicket.toLocaleTimeString())
+    
     fetch(
       `https://festadomilho-d2984-default-rtdb.firebaseio.com/registros/${userPayload.id}/tickets.json?auth=bPJEhIfXgv1iJxaOwQHwQuWz0ct7VDTR7zEFR07w`,
       {
@@ -47,7 +52,7 @@ export default function ModalTicketDetails({
         },
         body: JSON.stringify({
           id_barraca: ticket.id_barraca,
-          hora: new Date().toISOString()
+          hora: limitHourToClaimTicket.toLocaleTimeString()
         })
       }
     )
@@ -61,7 +66,7 @@ export default function ModalTicketDetails({
             tickets: [
               {
                 id_barraca: ticket.id_barraca,
-                hora: new Date().toISOString()
+                hora: limitHourToClaimTicket.toLocaleTimeString()
               }
             ]
           })

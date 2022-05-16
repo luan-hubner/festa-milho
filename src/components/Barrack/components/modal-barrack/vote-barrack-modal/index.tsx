@@ -72,8 +72,6 @@ export default function VoteBarrackModal({
 
   React.useEffect(() => {
     const verifyIfUserAlreadyVote = async (): Promise<void> => {
-      await AsyncStorage.removeItem('@VOTE_PAYLOAD')
-
       const vote = await AsyncStorage.getItem('@VOTE_PAYLOAD')
 
       if (vote) {
@@ -192,7 +190,7 @@ export default function VoteBarrackModal({
         })
       }
     )
-      .then((response) => response.json)
+      .then((response) => response.json())
       .then((response) => {
         registerNewVoter()
       })
@@ -217,8 +215,18 @@ export default function VoteBarrackModal({
         })
       }
     )
-      .then((response) => response.json)
-      .then((response) => {
+      .then((response) => response.json())
+      .then(async (response) => {
+        await AsyncStorage.setItem(
+          '@VOTE_PAYLOAD',
+          JSON.stringify({
+            id: response.name,
+            nome: name,
+            fone: phone,
+            aluno: isStudent
+          })
+        )
+
         handleSubmitSuccess()
       })
       .catch((err) => {

@@ -80,3 +80,35 @@ export const TicketDetails = styled.Modal`
   shadow-radius: 4px;
   elevation: 5;
 `
+
+export const User = styled.Text`
+  font-family: 'Archivo_700Bold';
+  font-size: 28px;
+  color: #484848;
+  text-align: center;
+  margin: 20px 0 20px 0;
+  text-transform: uppercase;
+`
+
+export const YourTicketInformationText = styled.Text`
+  font-family: 'Archivo_700Bold_Italic';
+  font-size: 18px;
+  color: #484848;
+  text-align: center;
+  margin: 40px 0 20px 0;
+`
+
+export const YourTicketInformationTitle = styled.Text`
+  font-family: 'Archivo_700Bold_Italic';
+  font-size: 24px;
+  color: #484848;
+  text-align: center;
+  margin: 20px 0 40px 0;
+`
+
+export const Hour = styled.Text`
+  font-family: 'Archivo_700Bold';
+  font-size: 48px;
+  color: #484848;
+  text-align: center;
+`
