@@ -8,7 +8,8 @@ import {
 import {
   Archivo_700Bold_Italic,
   Archivo_700Bold,
-  Archivo_400Regular_Italic
+  Archivo_400Regular_Italic,
+  Archivo_400Regular
 } from '@expo-google-fonts/archivo'
 import AppLoading from 'expo-app-loading'
 
@@ -26,7 +27,8 @@ export default function App() {
     Poppins_700Bold,
     Archivo_700Bold_Italic,
     Archivo_700Bold,
-    Archivo_400Regular_Italic
+    Archivo_400Regular_Italic,
+    Archivo_400Regular
   })
 
   if (!fontsLoaded) {
@@ -37,7 +39,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false, detachPreviousScreen: true }}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false, detachPreviousScreen: true }}
+      >
         <Stack.Screen name="Home" component={BottomRoutes} />
         <Stack.Screen name="Cardápio" component={FoodMenu} />
         <Stack.Screen name="Barracas" component={Barracks} />

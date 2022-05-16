@@ -72,6 +72,8 @@ export default function VoteBarrackModal({
 
   React.useEffect(() => {
     const verifyIfUserAlreadyVote = async (): Promise<void> => {
+      await AsyncStorage.removeItem('@VOTE_PAYLOAD')
+
       const vote = await AsyncStorage.getItem('@VOTE_PAYLOAD')
 
       if (vote) {
@@ -151,6 +153,7 @@ export default function VoteBarrackModal({
         })
 
         if (remodelResponse.length) {
+          console.log(remodelResponse[0])
           // USUÁRIO JÁ VOTOU UMA VEZ (VERIFICADO ATRAVÉS DO NÚMERO DE TELEFONE)
 
           await AsyncStorage.setItem(
