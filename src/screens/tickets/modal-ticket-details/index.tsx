@@ -24,7 +24,7 @@ interface ModalTicketDetailsProps {
 
 interface TicketDetailsType {
   descricao: string
-  valor: string
+  valor: number
   barraca: string
   id_barraca: number
 }

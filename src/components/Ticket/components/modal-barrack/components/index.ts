@@ -28,14 +28,12 @@ export const CloseIcon = styled.TouchableHighlight`
   position: absolute;
   right: 10px;
   top: 0px;
-  z-index: 999;
 `
 
 export const Title = styled.Text`
   font-family: Archivo_700Bold_Italic;
   font-size: 32px;
   text-align: center;
-  margin-top: 35px;
   margin-bottom: 25px;
 `
 
@@ -51,15 +49,6 @@ export const Description = styled.Text`
   font-family: Archivo_700Bold_Italic;
   font-size: 18px;
   color: #beb4b4;
-`
-
-export const NeedingVote = styled.Text`
-  font-family: Archivo_700Bold_Italic;
-  font-size: 24px;
-  color: #484848;
-  text-align: center;
-  padding: 40px 20px 0 20px;
-  margin-bottom: 40px;
 `
 
 export const SectionItem = styled.View`
@@ -111,28 +100,6 @@ export const Button = styled.TouchableHighlight`
   border-radius: 5px;
 
   margin: 0 auto;
-`
-
-export const TicketInfo = styled.Text`
-  font-family: Archivo_400Regular;
-  font-size: 20px;
-  color: #000;
-  text-align: center;
-  margin: 25px 0;
-`
-
-export const Line = styled.View`
-  width: 100%;
-  height: 1px;
-  background-color: #f1f1f1;
-  margin-bottom: 25px;
-`
-
-export const Warning = styled.Text`
-  font-family: Archivo_700Bold_Italic;
-  font-size: 32px;
-  color: red;
-  text-align: center;
 `
 
 export const ButtonText = styled.Text`

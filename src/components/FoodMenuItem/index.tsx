@@ -11,23 +11,36 @@ interface FoodMenuItemProps {
 }
 
 interface FoodType {
-  id: number
-  title: string
-  barracks: number[]
+  nome: string
+  barracas: FoodBarracksProps[]
 }
 
+interface FoodBarracksProps {
+  id_barraca: number
+}
+
+
 export default function FoodMenuItem({ food, navigation }: FoodMenuItemProps) {
+  let barracas = []
+
+  food.barracas.map(barrack => barracas.push(barrack.id_barraca))
+
+  const foodModel = {
+    nome: food.nome,
+    barracas
+  } 
+  
   return (
     <TouchableHighlight
       underlayColor="none"
-      onPress={() => navigation.navigate('Barracas', { props: { filteredBarracks: food.barracks } })}
+      onPress={() => navigation.navigate('Barracas', { props: { filteredBarracks: foodModel.barracas } })}
     >
       <Container>
         <Details>
-          <Title>{food.title}</Title>
+          <Title>{food.nome}</Title>
           <Subtitle>
-            {food.barracks.length}
-            {food.barracks.length > 1 ? ' barracas' : ' barraca'}
+            {food.barracas.length}
+            {food.barracas.length > 1 ? ' barracas' : ' barraca'}
           </Subtitle>
         </Details>
 

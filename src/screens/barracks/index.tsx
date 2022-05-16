@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { StatusBar } from 'expo-status-bar'
 import { Container, Search, Input, BarracksMenu } from './components'
 import { FontAwesome5 as FA5 } from '@expo/vector-icons'
 import Header from '../../components/Header'
@@ -14,6 +13,20 @@ interface BarracksScreenProps {
 
 export default function Barracks({ route, navigation }: BarracksScreenProps) {
   const [barracks, setBarracks] = React.useState([])
+
+  navigation.addListener('focus', () => {
+    if (route.params.props) {
+      handleFilteredBarracks(route.params.props.filteredBarracks)
+    } else {
+      setBarracks(listOfBarracks)
+    }
+  })
+
+  
+  navigation.addListener('blur', () => {
+    setBarracks(listOfBarracks)
+    route.params.props = null
+  })
 
   React.useEffect(() => {
     if (route.params.props) {

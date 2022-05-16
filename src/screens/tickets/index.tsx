@@ -3,30 +3,24 @@ import * as React from 'react'
 import Header from '../../components/Header'
 
 import {
-  BarrackName,
   Container,
-  Description,
   Hour,
-  Price,
-  Ticket,
-  TicketBody,
-  TicketDetails,
-  TicketTab,
   User,
   YourTicketInformationText,
   YourTicketInformationTitle
 } from './components'
 
-import { Text } from 'react-native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { TouchableHighlight } from 'react-native-gesture-handler'
-import ModalTicketDetails from './modal-ticket-details'
 import {
   Button,
   ButtonText,
   NeedingVote
 } from './modal-ticket-details/components'
+
+import { ticket as tickets } from '../../../assets/barracks.json'
+import Ticket from '../../components/Ticket'
+import { StatusBar } from 'expo-status-bar'
 
 interface TicketsScreenProps {
   route: any
@@ -49,20 +43,10 @@ interface UserPayloadTicketsType {
 export default function Tickets({ route, navigation }: TicketsScreenProps) {
   const [userPayload, setUserPayload] = React.useState<UserPayloadType>(null)
 
-  const [modalTicketDetailsOpen, setModalTicketDetailsOpen] =
-    React.useState(false)
-
   const [userTickets, setUserTickets] = React.useState(null)
   const [limitHour, setLimitHour] = React.useState('')
 
-  const tickets = [
-    {
-      descricao: '3 por 10',
-      valor: '10',
-      barraca: 'CABARÉ DAS NUTRI',
-      id_barraca: 2
-    }
-  ]
+  const [uploadPage, setUploadPage] = React.useState(false)
 
   navigation.addListener('focus', () => {
     verifyIfUserAlreadyVote()
@@ -90,10 +74,12 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
 
   React.useEffect(() => {
     verifyIfUserAlreadyVote()
-  }, [modalTicketDetailsOpen])
+  }, [uploadPage])
 
   return (
     <Container>
+      <StatusBar style='dark' translucent={false} />
+
       <Header title="Tickets" />
 
       {userPayload ? (
@@ -103,23 +89,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
 
             <YourTicketInformationTitle>VOCÊ POSSUI UM TICKET RESGATADO</YourTicketInformationTitle>
 
-            <TouchableHighlight
-              key={userTickets.descricao}
-              underlayColor="none"
-            >
-              <Ticket>
-                <TicketBody>
-                  <Description>{userTickets.descricao}</Description>
-
-                  <Price>{userTickets.valor}</Price>
-                </TicketBody>
-
-                <TicketTab>
-                  <BarrackName>{userTickets.barraca}</BarrackName>
-                </TicketTab>
-              </Ticket>
-            </TouchableHighlight>
-
+            <Ticket navigation={navigation} ticket={userTickets} readonly />
 
             <YourTicketInformationText>RESGATE O SEU PRODUTO ATÉ:</YourTicketInformationText>
 
@@ -127,38 +97,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
           </>
         ) : (
           tickets.map((ticket) => (
-            <TouchableHighlight
-              key={ticket.descricao}
-              underlayColor="none"
-              onPress={() => setModalTicketDetailsOpen(true)}
-            >
-              <Ticket>
-                <TicketBody>
-                  <Description>{ticket.descricao}</Description>
-
-                  <Price>{ticket.valor}</Price>
-                </TicketBody>
-
-                <TicketTab>
-                  <BarrackName>{ticket.barraca}</BarrackName>
-                </TicketTab>
-
-                <TicketDetails
-                  animationType="slide"
-                  transparent={false}
-                  visible={modalTicketDetailsOpen}
-                  onRequestClose={() => {
-                    setModalTicketDetailsOpen(false)
-                  }}
-                >
-                  <ModalTicketDetails
-                    navigation={navigation}
-                    ticket={ticket}
-                    setModalTicketDetailsOpen={setModalTicketDetailsOpen}
-                  />
-                </TicketDetails>
-              </Ticket>
-            </TouchableHighlight>
+            <Ticket navigation={navigation} ticket={ticket} key={ticket.descricao} uploadPage={setUploadPage} />
           ))
         )
       ) : (
