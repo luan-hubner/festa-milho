@@ -20,6 +20,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 
 import BottomRoutes from './src/bottomTabs'
 import Barracks from './src/screens/barracks'
+import About from './src/screens/about'
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -43,6 +44,7 @@ export default function App() {
         screenOptions={{ headerShown: false, detachPreviousScreen: true }}
       >
         <Stack.Screen name="Home" component={BottomRoutes} />
+        <Stack.Screen name="Informações" component={About} />
         <Stack.Screen name="Cardápio" component={FoodMenu} />
         <Stack.Screen name="Barracas" component={Barracks} />
       </Stack.Navigator>

@@ -45,6 +45,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
 
   const [userTickets, setUserTickets] = React.useState(null)
   const [limitHour, setLimitHour] = React.useState('')
+  const [day, setDay] = React.useState('')
 
   const [uploadPage, setUploadPage] = React.useState(false)
 
@@ -56,6 +57,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
     const payload = await AsyncStorage.getItem('@VOTE_PAYLOAD')
 
     if (!payload) {
+      setUserPayload(null)
       return
     }
 
@@ -66,6 +68,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
         (ticket) => ticket.id_barraca === payloadParsed.tickets[0].id_barraca
       )[0]
       setLimitHour(payloadParsed.tickets[0].hora)
+      setDay(payloadParsed.tickets[0].dia)
       setUserTickets(ticket)
     }
 
@@ -78,7 +81,7 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
 
   return (
     <Container>
-      <StatusBar style='dark' translucent={false} />
+      <StatusBar style="dark" translucent={false} />
 
       <Header title="Tickets" />
 
@@ -87,17 +90,35 @@ export default function Tickets({ route, navigation }: TicketsScreenProps) {
           <>
             <User>{userPayload.nome}</User>
 
-            <YourTicketInformationTitle>VOCÊ POSSUI UM TICKET RESGATADO</YourTicketInformationTitle>
+            <YourTicketInformationTitle>
+              VOCÊ POSSUI UM TICKET RESGATADO
+            </YourTicketInformationTitle>
 
-            <Ticket navigation={navigation} ticket={userTickets} readonly />
+            <Ticket
+              navigation={navigation}
+              ticket={userTickets}
+              readonly
+              uploadPage={setUploadPage}
+            />
 
-            <YourTicketInformationText>RESGATE O SEU PRODUTO ATÉ:</YourTicketInformationText>
+            <YourTicketInformationText>
+              RESGATE O SEU PRODUTO ATÉ:
+            </YourTicketInformationText>
 
-            <Hour>{limitHour.split(':')[0] + ':' + limitHour.split(':')[1]}</Hour>
+            <Hour>
+              {limitHour.split(':')[0] + ':' + limitHour.split(':')[1]}
+            </Hour>
+
+            <Hour>{day}</Hour>
           </>
         ) : (
           tickets.map((ticket) => (
-            <Ticket navigation={navigation} ticket={ticket} key={ticket.descricao} uploadPage={setUploadPage} />
+            <Ticket
+              navigation={navigation}
+              ticket={ticket}
+              key={ticket.descricao}
+              uploadPage={setUploadPage}
+            />
           ))
         )
       ) : (

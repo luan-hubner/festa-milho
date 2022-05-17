@@ -44,7 +44,6 @@ export default function Home({ navigation }) {
           </MenuButton>
         </TouchableHighlight>
 
-
         <TouchableHighlight
           underlayColor="none"
           onPress={() => navigation.navigate('Tickets')}
@@ -56,11 +55,16 @@ export default function Home({ navigation }) {
           </MenuButton>
         </TouchableHighlight>
 
-        <MenuButton>
-          <MenuButtonText>INFORMAÇÕES</MenuButtonText>
+        <TouchableHighlight
+          underlayColor="none"
+          onPress={() => navigation.navigate('Informações')}
+        >
+          <MenuButton>
+            <MenuButtonText>INFORMAÇÕES</MenuButtonText>
 
-          <FA5 name="info-circle" color="#484848" size={28} />
-        </MenuButton>
+            <FA5 name="info-circle" color="#484848" size={28} />
+          </MenuButton>
+        </TouchableHighlight>
       </Menu>
     </Container>
   )

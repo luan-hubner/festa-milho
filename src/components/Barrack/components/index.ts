@@ -30,6 +30,7 @@ export const Title = styled.Text`
   font-family: 'Archivo_700Bold_Italic';
   font-size: 18px;
   color: #484848;
+  max-width: 200px;
 `
 
 export const Subtitle = styled.Text`
@@ -44,6 +45,8 @@ export const Image = styled.Image`
   height: 69px;
 
   margin-right: 16px;
+
+  border-radius: 100px;
 `
 
 export const Stars = styled.View`

@@ -26,11 +26,15 @@ interface TicketType {
   id_barraca: number
 }
 
-
-export default function Ticket({ navigation, ticket, readonly, uploadPage }: TicketProps) {
+export default function Ticket({
+  navigation,
+  ticket,
+  readonly,
+  uploadPage
+}: TicketProps) {
   const [modalTicketDetailsOpen, setModalTicketDetailsOpen] =
     React.useState(false)
-    
+
   const closeModal = () => {
     setModalTicketDetailsOpen(false)
     uploadPage(true)
@@ -40,13 +44,20 @@ export default function Ticket({ navigation, ticket, readonly, uploadPage }: Tic
     <TouchableHighlight
       key={ticket.descricao}
       underlayColor="none"
-      onPress={() => { !readonly && setModalTicketDetailsOpen(true) }}
+      onPress={() => {
+        !readonly && setModalTicketDetailsOpen(true)
+      }}
     >
       <Tck>
         <TicketBody>
           <Description>{ticket.descricao}</Description>
 
-          <Price>{ticket.valor}</Price>
+          <Price>
+            {Number(ticket.valor).toLocaleString('pt-br', {
+              style: 'currency',
+              currency: 'BRL'
+            })}
+          </Price>
         </TicketBody>
 
         <TicketTab>

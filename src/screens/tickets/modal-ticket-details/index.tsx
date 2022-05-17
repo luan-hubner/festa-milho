@@ -40,8 +40,11 @@ export default function ModalTicketDetails({
     const now = new Date()
     const limitHourToClaimTicket = new Date(now.getTime() + 15 * 60000)
 
+    const day = now.getDate()
+    const month = now.getMonth() + 1
+
     console.log(limitHourToClaimTicket.toLocaleTimeString())
-    
+
     fetch(
       `https://festadomilho-d2984-default-rtdb.firebaseio.com/registros/${userPayload.id}/tickets.json?auth=bPJEhIfXgv1iJxaOwQHwQuWz0ct7VDTR7zEFR07w`,
       {
@@ -52,7 +55,8 @@ export default function ModalTicketDetails({
         },
         body: JSON.stringify({
           id_barraca: ticket.id_barraca,
-          hora: limitHourToClaimTicket.toLocaleTimeString()
+          hora: limitHourToClaimTicket.toLocaleTimeString(),
+          dia: `${day}/0${month}`
         })
       }
     )
@@ -66,7 +70,8 @@ export default function ModalTicketDetails({
             tickets: [
               {
                 id_barraca: ticket.id_barraca,
-                hora: limitHourToClaimTicket.toLocaleTimeString()
+                hora: limitHourToClaimTicket.toLocaleTimeString(),
+                dia: `${day}/0${month}`
               }
             ]
           })
@@ -92,7 +97,12 @@ export default function ModalTicketDetails({
 
         <TicketInfo>
           Você está resgatando o ticket da barraca {ticket.barraca}, o ticket é:{' '}
-          {ticket.descricao} no valor de {ticket.valor}.
+          {ticket.descricao} no valor de{' '}
+          {Number(ticket.valor).toLocaleString('pt-br', {
+            style: 'currency',
+            currency: 'BRL'
+          })}
+          .
         </TicketInfo>
 
         <TicketInfo>
@@ -102,7 +112,7 @@ export default function ModalTicketDetails({
 
         <Line />
 
-        <Warning>ATENÇÂO</Warning>
+        <Warning>ATENÇÃO</Warning>
 
         <TicketInfo>
           A partir do momento que confirmar o resgate você terá 15 minutos para

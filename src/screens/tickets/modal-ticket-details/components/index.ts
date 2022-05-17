@@ -7,10 +7,9 @@ export const OutsideContainer = styled.View`
 `
 
 export const Container = styled.ScrollView`
-  flex: 0.925;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  height: 80%;
 
   padding: 40px 20px 20px 20px;
 `

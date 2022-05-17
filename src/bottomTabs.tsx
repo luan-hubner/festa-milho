@@ -7,6 +7,7 @@ import Home from './screens/home'
 import FoodMenu from './screens/food-menu'
 import Barracks from './screens/barracks'
 import Tickets from './screens/tickets'
+import About from './screens/about'
 
 export default function BottomRoutes() {
   const Tab = createBottomTabNavigator()
@@ -20,7 +21,7 @@ export default function BottomRoutes() {
           headerShown: false,
           tabBarShowLabel: false,
           tabBarActiveTintColor: 'green',
-          tabBarInactiveTintColor: 'black',
+          tabBarInactiveTintColor: 'black'
         }}
       >
         <Tab.Screen

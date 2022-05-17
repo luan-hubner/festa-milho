@@ -9,12 +9,13 @@ export const Container = styled.ScrollView`
 `
 
 export const Image = styled.Image`
-  width: 142px;
-  height: 142px;
+  max-width: 350px;
 
   margin: 0 auto;
 
   margin-bottom: 30px;
+
+  z-index: -1;
 `
 
 export const CloseIcon = styled.TouchableHighlight`
@@ -27,6 +28,7 @@ export const Title = styled.Text`
   font-family: Archivo_700Bold_Italic;
   font-size: 32px;
   text-align: center;
+  margin-top: 70px;
   margin-bottom: 25px;
 `
 

@@ -16,12 +16,13 @@ export const Container = styled.ScrollView`
 `
 
 export const Image = styled.Image`
-  width: 142px;
-  height: 142px;
+  max-width: 350px;
 
   margin: 0 auto;
 
   margin-bottom: 25px;
+
+  z-index: -1;
 `
 
 export const CloseIcon = styled.TouchableHighlight`
@@ -71,7 +72,7 @@ export const ItemText = styled.Text`
   font-size: 18px;
   color: #484848;
   padding: 8px 0;
-  max-width: 80%;
+  max-width: 70%;
 `
 
 export const VoteFooter = styled.View`

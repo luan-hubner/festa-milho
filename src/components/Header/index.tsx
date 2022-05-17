@@ -10,8 +10,6 @@ export default function Header({ title }: HeaderProps) {
   return (
     <Container>
       <Title>{title}</Title>
-
-      <FA5 name="info-circle" color="#484848" size={28} />
     </Container>
   )
 }
