@@ -16,13 +16,16 @@ export const Container = styled.ScrollView`
 `
 
 export const Image = styled.Image`
-  max-width: 350px;
+  width: 100%;
+  max-height: 400px;
 
   margin: 0 auto;
 
   margin-bottom: 25px;
 
   z-index: -1;
+
+  resize-mode: contain;
 `
 
 export const CloseIcon = styled.TouchableHighlight`

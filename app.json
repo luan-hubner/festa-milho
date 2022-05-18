@@ -24,7 +24,9 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.fasipe.festadomilho"
+      "package": "com.fasipe.festadomilho",
+      "versionCode": 2,
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"

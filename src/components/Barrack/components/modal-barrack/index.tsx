@@ -85,7 +85,7 @@ export default function ModalBarrack({
     case 4:
       image = (
         <Image
-          source={require('../../../../../assets/barracks/milhosoft.png')}
+          source={require('../../../../../assets/barracks_images/4.jpg')}
         />
       )
       break
@@ -197,11 +197,11 @@ export default function ModalBarrack({
         />
       )
       break
-    // case 21:
-    //   image = (
-    //     <Image source={require('../../../../../assets/barracks_images/21.jpg')} />
-    //   )
-    //   break
+    case 21:
+      image = (
+        <Image source={require('../../../../../assets/barracks_images/21.jpg')} />
+      )
+      break
     case 22:
       image = (
         <Image

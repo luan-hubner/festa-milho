@@ -8,7 +8,7 @@ import {
   MenuButton
 } from './components'
 import { FontAwesome5 as FA5 } from '@expo/vector-icons'
-import { TouchableHighlight, View } from 'react-native'
+import { Linking, TouchableHighlight, View } from 'react-native'
 
 export default function Home({ navigation }) {
   return (
@@ -16,11 +16,16 @@ export default function Home({ navigation }) {
       <Image source={require('../../../assets/milho_logo.png')} />
 
       <Menu>
-        <MenuButton>
-          <MenuButtonText>MAPA</MenuButtonText>
+        <TouchableHighlight
+          underlayColor="none"
+          onPress={() => Linking.openURL('https://drive.google.com/file/d/1TPoTkAyViKmGs4TrsbjEoIT-uerIDyqr/view?usp=sharing')}
+        >
+          <MenuButton>
+            <MenuButtonText>MAPA</MenuButtonText>
 
-          <FA5 name="map-marker-alt" color="#484848" size={28} />
-        </MenuButton>
+            <FA5 name="map-marker-alt" color="#484848" size={28} />
+          </MenuButton>
+        </TouchableHighlight>
 
         <TouchableHighlight
           underlayColor="none"

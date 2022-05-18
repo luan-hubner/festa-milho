@@ -64,7 +64,7 @@ export default function Barrack({ navigation, barrack }: BarrackProps) {
       break
     case 4:
       image = (
-        <Image source={require('../../../assets/barracks/milhosoft.png')} />
+        <Image source={require('../../../assets/barracks_images/4.jpg')} />
       )
       break
     case 5:
@@ -147,11 +147,11 @@ export default function Barrack({ navigation, barrack }: BarrackProps) {
         <Image source={require('../../../assets/barracks_images/20.jpg')} />
       )
       break
-    // case 21:
-    //   image = (
-    //     <Image source={require('../../../assets/barracks_images/21.jpg')} />
-    //   )
-    //   break
+    case 21:
+      image = (
+        <Image source={require('../../../assets/barracks_images/21.jpg')} />
+      )
+      break
     case 22:
       image = (
         <Image source={require('../../../assets/barracks_images/22.jpg')} />

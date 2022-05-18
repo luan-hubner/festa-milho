@@ -8,6 +8,7 @@ import FoodMenu from './screens/food-menu'
 import Barracks from './screens/barracks'
 import Tickets from './screens/tickets'
 import About from './screens/about'
+import Map from './screens/map'
 
 export default function BottomRoutes() {
   const Tab = createBottomTabNavigator()
@@ -30,6 +31,13 @@ export default function BottomRoutes() {
           options={{
             tabBarStyle: { display: 'none' },
             tabBarIcon: () => <FA5 name="home" color="#484848" size={28} />
+          }}
+        />
+        <Tab.Screen
+          name="Mapa"
+          component={Map}
+          options={{
+            tabBarButton: () => null,
           }}
         />
         <Tab.Screen
@@ -56,6 +64,13 @@ export default function BottomRoutes() {
             tabBarIcon: () => (
               <FA5 name="ticket-alt" color="#484848" size={28} />
             )
+          }}
+        />
+        <Tab.Screen
+          name="Informações"
+          component={About}
+          options={{
+            tabBarIcon: () => <FA5 name="info" color="#484848" size={28} />
           }}
         />
       </Tab.Navigator>
