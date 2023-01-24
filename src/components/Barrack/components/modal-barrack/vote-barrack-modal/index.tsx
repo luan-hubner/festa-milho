@@ -23,7 +23,7 @@ import { Keyboard, Switch } from 'react-native'
 import base64 from 'react-native-base64'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import MaskInput from 'react-native-mask-input';
+import MaskInput from 'react-native-mask-input'
 
 interface VoteBarrackModalProps {
   navigation: any
@@ -118,9 +118,9 @@ export default function VoteBarrackModal({
     }, 2000)
   }
 
-  function validPhone (phone) {
-    var regex = new RegExp('^\\([0-9]{2}\\)(9[0-9]{4}-[0-9]{4})$');
-    return regex.test(phone);
+  function validPhone(phone) {
+    var regex = new RegExp('^\\([0-9]{2}\\)(9[0-9]{4}-[0-9]{4})$')
+    return regex.test(phone)
   }
 
   const handleSubmit = () => {
@@ -136,7 +136,7 @@ export default function VoteBarrackModal({
     }
 
     const phoneIsValid = validPhone(phone)
-    
+
     console.log('phoneIsValid', phoneIsValid)
     if (!phoneIsValid) {
       setPhoneIncorrect(true)
@@ -149,8 +149,7 @@ export default function VoteBarrackModal({
       `https://festadomilho-d2984-default-rtdb.firebaseio.com/registros.json?auth=bPJEhIfXgv1iJxaOwQHwQuWz0ct7VDTR7zEFR07w&orderBy=%22fone%22&equalTo=%22${phone}%22`,
       {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         }
       }
     )
@@ -204,8 +203,7 @@ export default function VoteBarrackModal({
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           voto: 1
@@ -227,8 +225,7 @@ export default function VoteBarrackModal({
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nome: name,
@@ -277,7 +274,7 @@ export default function VoteBarrackModal({
           )}
         </>
       ) : (
-        <Title style={{marginTop: 20}}></Title>
+        <Title style={{ marginTop: 20 }}></Title>
       )}
 
       {userAlreadyHaveVote ? (
@@ -317,9 +314,24 @@ export default function VoteBarrackModal({
               }}
               value={phone}
               onChangeText={(masked, unmasked) => {
-                setPhone(masked);
+                setPhone(masked)
               }}
-              mask={['(', /\d/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+              mask={[
+                '(',
+                /\d/,
+                /\d/,
+                ')',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/,
+                '-',
+                /\d/,
+                /\d/,
+                /\d/,
+                /\d/
+              ]}
             />
             <FA5 name="phone" color="#484848" size={24} />
           </Input>

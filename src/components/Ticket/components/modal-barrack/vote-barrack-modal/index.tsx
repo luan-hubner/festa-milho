@@ -129,8 +129,7 @@ export default function VoteBarrackModal({
       `https://festadomilho-d2984-default-rtdb.firebaseio.com/registros.json?auth=bPJEhIfXgv1iJxaOwQHwQuWz0ct7VDTR7zEFR07w&orderBy=%22fone%22&equalTo=%22${phone}%22`,
       {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         }
       }
     )
@@ -184,8 +183,7 @@ export default function VoteBarrackModal({
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           voto: 1
@@ -207,8 +205,7 @@ export default function VoteBarrackModal({
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nome: name,

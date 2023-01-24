@@ -50,8 +50,7 @@ export default function ModalTicketDetails({
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Basic ${base64.encode('suporte:mfvmbr')}`
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           id_barraca: ticket.id_barraca,
